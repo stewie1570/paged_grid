@@ -7,15 +7,20 @@ import 'bootstrap-css-only'
 import './App.css';
 
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.rows = _.range(700).map(i => ({col1: `row #${i}`, col2: `row #${i}`}));
-    this.state = {currentPage: 0};
+    this.rows = _.range(700).map(i => ({
+      col1: `row #${i}`,
+      col2: `row #${i}`
+    }));
+    this.state = {
+      currentPage: 0
+    };
   }
-  
+
   render() {
     var numPerPage = 6;
-    
+
     return <div>
       <HorozontalGrid
         rows={Paging
