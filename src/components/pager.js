@@ -1,5 +1,5 @@
 import React from 'react'
-import {Paging} from '../core/paging'
+import { Paging } from '../core/paging'
 
 export function Pager(props) {
     var pages = Paging
@@ -11,12 +11,13 @@ export function Pager(props) {
         });
     var allPages = Paging
         .on(props.rows)
-        .getAvailablePagesFrom({numPerPage: props.numPerPage});
+        .getAvailablePagesFrom({ numPerPage: props.numPerPage });
     var lastPage = allPages.length - 1;
     var currentPage = Math.min(lastPage, props.currentPage);
+    var hasPages = allPages.length > 0;
 
     return <div>
-        <button onClick={() => props.onPageSelected(0)}>First</button>
+        {hasPages && currentPage !== 0 && <button onClick={() => props.onPageSelected(0)}>First</button>}
         {
             pages.map(page => page === currentPage ? (page + 1) : <button
                 key={page}
@@ -24,6 +25,6 @@ export function Pager(props) {
                 {page + 1}
             </button>)
         }
-        <button onClick={() => props.onPageSelected(lastPage)}>Last</button>
-        </div>;
+        {hasPages && currentPage !== lastPage && <button onClick={() => props.onPageSelected(lastPage)}>Last</button>}
+    </div>;
 }
