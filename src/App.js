@@ -40,7 +40,7 @@ class App extends Component {
                 noRowsMessage={<i>No data...</i>}
                 className="table table-striped" />
             <Pager
-                rows={filteredData}
+                length={filteredData.length}
                 numPerPage={numPerPage}
                 maxPages={5}
                 currentPage={this.state.currentPage}

@@ -31,71 +31,71 @@ describe("Paging", () => {
         });
     });
     
-    describe("Available pages", () => {
+    describe("Available pages from data length", () => {
         it("should be a list of available page numbers", () => {
             expect(Paging
-                .on(range({ start: 0, end: 19 }))
                 .getAvailablePagesFrom({
-                    numPerPage: 5
+                    numPerPage: 5,
+                    length: 20
                 })).toEqual([0, 1, 2, 3])
         });
         
         it("should be a maxed list of available page numbers", () => {
             expect(Paging
-                .on(range({ start: 0, end: 19 }))
                 .getAvailablePagesFrom({
                     numPerPage: 5,
-                    maxPages: 3
+                    maxPages: 3,
+                    length: 20
                 })).toEqual([0, 1, 2])
         });
         
         it("should be a maxed list of available page numbers centered on currentPage in the middle", () => {
             expect(Paging
-                .on(range({ start: 0, end: 99 }))
                 .getAvailablePagesFrom({
                     numPerPage: 10,
                     maxPages: 3,
-                    currentPage: 5
+                    currentPage: 5,
+                    length: 100
                 })).toEqual([4, 5, 6])
         });
         
         it("should be a maxed list of available page numbers centered on currentPage at the beginning", () => {
             expect(Paging
-                .on(range({ start: 0, end: 49 }))
                 .getAvailablePagesFrom({
                     numPerPage: 10,
                     maxPages: 5,
-                    currentPage: 1
+                    currentPage: 1,
+                    length: 50
                 })).toEqual([0, 1, 2, 3, 4])
         });
         
         it("should be a maxed list of available page numbers centered on currentPage at the end", () => {
             expect(Paging
-                .on(range({ start: 0, end: 99 }))
                 .getAvailablePagesFrom({
                     numPerPage: 10,
                     maxPages: 5,
-                    currentPage: 9
+                    currentPage: 9,
+                    length: 100
                 })).toEqual([5, 6, 7, 8, 9])
         });
         
         it("should display numOfPages when numOfPages is less than maxPages", () => {
             expect(Paging
-                .on(range({ start: 0, end: 9 }))
                 .getAvailablePagesFrom({
                     numPerPage: 2,
                     maxPages: 10,
-                    currentPage: 4
+                    currentPage: 4,
+                    length: 10
                 })).toEqual([0, 1, 2, 3, 4])
         });
         
         it("should not have decimals in pages", () => {
             expect(Paging
-                .on(range({ start: 0, end: 98 }))
                 .getAvailablePagesFrom({
                     numPerPage: 10,
                     maxPages: 5,
-                    currentPage: 9
+                    currentPage: 9,
+                    length: 99
                 })).toEqual([5, 6, 7, 8, 9])
         });
     });

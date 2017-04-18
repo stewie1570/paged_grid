@@ -9,17 +9,17 @@ export var Paging = {
             var currentPage = Math.min(page, lastPage);
 
             return data.slice(currentPage * numPerPage, (currentPage + 1) * numPerPage);
-        },
-
-        getAvailablePagesFrom: ({ numPerPage, maxPages, currentPage }) => {
-            var numOfPages = numOfPagesFrom({ length: data.length, numPerPage });
-            var lastCenteredStart = numOfPages - (maxPages || numOfPages);
-            var centeredStart = Math.min(
-                lastCenteredStart,
-                Math.floor((currentPage || 0) - ((maxPages || numOfPages) / 2)) + 1);
-            var start = Math.max(0, centeredStart);
-
-            return range({ start, end: start + Math.min((maxPages || numOfPages), numOfPages) });
         }
-    })
+    }),
+    
+    getAvailablePagesFrom: ({ numPerPage, maxPages, currentPage, length }) => {
+        var numOfPages = numOfPagesFrom({ length, numPerPage });
+        var lastCenteredStart = numOfPages - (maxPages || numOfPages);
+        var centeredStart = Math.min(
+            lastCenteredStart,
+            Math.floor((currentPage || 0) - ((maxPages || numOfPages) / 2)) + 1);
+        var start = Math.max(0, centeredStart);
+
+        return range({ start, end: start + Math.min((maxPages || numOfPages), numOfPages) });
+    }
 }
