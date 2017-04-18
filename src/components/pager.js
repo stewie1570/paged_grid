@@ -26,5 +26,6 @@ export function Pager(props) {
             </button>)
         }
         {hasPages && currentPage !== lastPage && <button onClick={() => props.onPageSelected(lastPage)}>Last</button>}
+        {hasPages && <span> of {lastPage + 1} page(s)</span>}
     </div>;
 }
