@@ -12,16 +12,18 @@ export function Pager(props) {
     var allPages = Paging
         .on(props.rows)
         .getAvailablePagesFrom({numPerPage: props.numPerPage});
+    var lastPage = allPages.length - 1;
+    var currentPage = Math.min(lastPage, props.currentPage);
 
     return <div>
         <button onClick={() => props.onPageSelected(0)}>First</button>
         {
-            pages.map(page => page === props.currentPage ? (page + 1) : <button
+            pages.map(page => page === currentPage ? (page + 1) : <button
                 key={page}
                 onClick={() => props.onPageSelected(page)}>
                 {page + 1}
             </button>)
         }
-        <button onClick={() => props.onPageSelected(allPages.length - 1)}>Last</button>
+        <button onClick={() => props.onPageSelected(lastPage)}>Last</button>
         </div>;
 }

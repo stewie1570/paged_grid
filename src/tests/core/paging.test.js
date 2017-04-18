@@ -20,6 +20,15 @@ describe("Paging", () => {
                     page: 1
                 })).toEqual([4]);
         });
+
+        it("should return last page when page requested is greater than last page", () => {
+            expect(Paging
+                .on([1, 2, 3, 4])
+                .getPage({
+                    numPerPage: 3,
+                    page: 3
+                })).toEqual([4]);
+        });
     });
     
     describe("Available pages", () => {
@@ -80,7 +89,7 @@ describe("Paging", () => {
                 })).toEqual([0, 1, 2, 3, 4])
         });
         
-        it("should have decimals in pages", () => {
+        it("should not have decimals in pages", () => {
             expect(Paging
                 .on(_.range(99))
                 .getAvailablePagesFrom({
