@@ -22,7 +22,7 @@ class App extends Component {
     }
 
     render() {
-        var numPerPage = 6;
+        var itemsPerPage = 6;
         var filteredData = Filter.on({
             data: this.rows,
             onColumns: ["col1", "col2"],
@@ -34,15 +34,15 @@ class App extends Component {
             <HorozontalGrid
                 rows={Paging
                     .on(filteredData)
-                    .getPage({ numPerPage, page: this.state.currentPage })
+                    .getPage({ itemsPerPage, page: this.state.currentPage })
                 }
                 columns={["col1", "col2"]}
                 noRowsMessage={<i>No data...</i>}
                 className="table table-striped" />
             <Pager
-                length={filteredData.length}
-                numPerPage={numPerPage}
-                maxPages={5}
+                numItems={filteredData.length}
+                itemsPerPage={itemsPerPage}
+                maxPagesDisplayed={5}
                 currentPage={this.state.currentPage}
                 onPageSelected={currentPage => this.setState({ currentPage })} />
         </div>;

@@ -1,19 +1,19 @@
 import { range } from './index'
 
-var numOfPagesFrom = ({ length, numPerPage }) => Math.round((length / numPerPage) + 0.49999999999);
+var numOfPagesFrom = ({ numItems, itemsPerPage }) => Math.round((numItems / itemsPerPage) + 0.49999999999);
 
 export var Paging = {
     on: data => ({
-        getPage: ({ numPerPage, page }) => {
-            var lastPage = numOfPagesFrom({ length: data.length, numPerPage }) - 1;
+        getPage: ({ itemsPerPage, page }) => {
+            var lastPage = numOfPagesFrom({ numItems: data.length, itemsPerPage }) - 1;
             var currentPage = Math.min(page, lastPage);
 
-            return data.slice(currentPage * numPerPage, (currentPage + 1) * numPerPage);
+            return data.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
         }
     }),
     
-    getAvailablePagesFrom: ({ numPerPage, maxPages, currentPage, length }) => {
-        var numOfPages = numOfPagesFrom({ length, numPerPage });
+    getAvailablePagesFrom: ({ itemsPerPage, maxPages, currentPage, numItems }) => {
+        var numOfPages = numOfPagesFrom({ numItems, itemsPerPage });
         var lastCenteredStart = numOfPages - (maxPages || numOfPages);
         var centeredStart = Math.min(
             lastCenteredStart,

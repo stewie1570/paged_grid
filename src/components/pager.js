@@ -2,15 +2,15 @@ import React from 'react'
 import { Paging } from '../core/paging'
 
 export function Pager(props) {
-    var length = props.length || props.rows.length;
+    var numItems = props.numItems || props.rows.length;
     var pages = Paging
         .getAvailablePagesFrom({
-            numPerPage: props.numPerPage,
-            maxPages: props.maxPages,
+            itemsPerPage: props.itemsPerPage,
+            maxPages: props.maxPagesDisplayed,
             currentPage: props.currentPage,
-            length
+            numItems
         });
-    var numPages = Paging.getAvailablePagesFrom({ numPerPage: props.numPerPage, length }).length;
+    var numPages = Paging.getAvailablePagesFrom({ itemsPerPage: props.itemsPerPage, numItems }).length;
     var lastPage = numPages - 1;
     var currentPage = Math.min(lastPage, props.currentPage);
     var hasPages = numPages > 0;
