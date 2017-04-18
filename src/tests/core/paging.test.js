@@ -1,5 +1,5 @@
 import { Paging } from '../../core/paging'
-import _ from 'lodash'
+import { range } from '../../core'
 
 describe("Paging", () => {
     describe("Page", () => {
@@ -34,7 +34,7 @@ describe("Paging", () => {
     describe("Available pages", () => {
         it("should be a list of available page numbers", () => {
             expect(Paging
-                .on(_.range(20))
+                .on(range({ start: 0, end: 19 }))
                 .getAvailablePagesFrom({
                     numPerPage: 5
                 })).toEqual([0, 1, 2, 3])
@@ -42,7 +42,7 @@ describe("Paging", () => {
         
         it("should be a maxed list of available page numbers", () => {
             expect(Paging
-                .on(_.range(20))
+                .on(range({ start: 0, end: 19 }))
                 .getAvailablePagesFrom({
                     numPerPage: 5,
                     maxPages: 3
@@ -51,7 +51,7 @@ describe("Paging", () => {
         
         it("should be a maxed list of available page numbers centered on currentPage in the middle", () => {
             expect(Paging
-                .on(_.range(100))
+                .on(range({ start: 0, end: 99 }))
                 .getAvailablePagesFrom({
                     numPerPage: 10,
                     maxPages: 3,
@@ -61,7 +61,7 @@ describe("Paging", () => {
         
         it("should be a maxed list of available page numbers centered on currentPage at the beginning", () => {
             expect(Paging
-                .on(_.range(50))
+                .on(range({ start: 0, end: 49 }))
                 .getAvailablePagesFrom({
                     numPerPage: 10,
                     maxPages: 5,
@@ -71,7 +71,7 @@ describe("Paging", () => {
         
         it("should be a maxed list of available page numbers centered on currentPage at the end", () => {
             expect(Paging
-                .on(_.range(100))
+                .on(range({ start: 0, end: 99 }))
                 .getAvailablePagesFrom({
                     numPerPage: 10,
                     maxPages: 5,
@@ -81,7 +81,7 @@ describe("Paging", () => {
         
         it("should display numOfPages when numOfPages is less than maxPages", () => {
             expect(Paging
-                .on(_.range(10))
+                .on(range({ start: 0, end: 9 }))
                 .getAvailablePagesFrom({
                     numPerPage: 2,
                     maxPages: 10,
@@ -91,7 +91,7 @@ describe("Paging", () => {
         
         it("should not have decimals in pages", () => {
             expect(Paging
-                .on(_.range(99))
+                .on(range({ start: 0, end: 98 }))
                 .getAvailablePagesFrom({
                     numPerPage: 10,
                     maxPages: 5,

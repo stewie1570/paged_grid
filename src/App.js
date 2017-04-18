@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 import { HorozontalGrid } from './components/horozontal-grid'
 import { Pager } from './components/pager'
 import { TextInput } from './components/text-input'
+import { range } from './core'
 import { Paging } from './core/paging'
 import { Filter } from './core/filtering'
-import _ from 'lodash'
 import 'bootstrap-css-only'
 import './App.css';
 
 class App extends Component {
     constructor(props) {
         super(props);
-        this.rows = _.range(700).map(i => ({
+        this.rows = range({ start: 1, end: 700 }).map(i => ({
             col1: `row #${i}`,
             col2: `row #${i}`
         }));

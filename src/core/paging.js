@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import { range } from './index'
 
 var numOfPagesFrom = ({ length, numPerPage }) => Math.round((length / numPerPage) + 0.49999999999);
 
@@ -19,7 +19,7 @@ export var Paging = {
                 Math.floor((currentPage || 0) - ((maxPages || numOfPages) / 2)) + 1);
             var start = Math.max(0, centeredStart);
 
-            return _.range(start, start + Math.min((maxPages || numOfPages), numOfPages));
+            return range({ start, end: start + Math.min((maxPages || numOfPages), numOfPages) });
         }
     })
 }
