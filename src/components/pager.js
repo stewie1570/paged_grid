@@ -16,8 +16,8 @@ export function Pager(props) {
     var currentPage = Math.min(lastPage, props.currentPage);
     var hasPages = allPages.length > 0;
 
-    return <div>
-        {hasPages && currentPage !== 0 && <button onClick={() => props.onPageSelected(0)}>First</button>}
+    return !hasPages ? <div /> : <div>
+        {currentPage !== 0 && <button onClick={() => props.onPageSelected(0)}>First</button>}
         {
             pages.map(page => page === currentPage ? (page + 1) : <button
                 key={page}
@@ -25,7 +25,7 @@ export function Pager(props) {
                 {page + 1}
             </button>)
         }
-        {hasPages && currentPage !== lastPage && <button onClick={() => props.onPageSelected(lastPage)}>Last</button>}
-        {hasPages && <span> of {lastPage + 1} page(s)</span>}
+        {currentPage !== lastPage && <button onClick={() => props.onPageSelected(lastPage)}>Last</button>}
+        <span> of {lastPage + 1} page(s)</span>
     </div>;
 }
