@@ -7,4 +7,7 @@ export function camelToSpacedProper(str){
     return str ? processCasing(str) : "";
 }
 
-export var range = ({start, end}) => new Array(end - start).fill(0).map((item, index) => start + index);
+export var range = ({start, end}) => new Array(end - start)
+    .join('.')
+    .split('.')
+    .map((item, index) => start + index);
