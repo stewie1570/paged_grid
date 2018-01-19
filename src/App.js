@@ -42,7 +42,7 @@ class App extends Component {
             <Pager
                 numItems={filteredData.length}
                 itemsPerPage={itemsPerPage}
-                maxPagesDisplayed={5}
+                maxPagesDisplayed={9}
                 currentPage={this.state.currentPage}
                 onPageSelected={currentPage => this.setState({ currentPage })} />
         </div>;
