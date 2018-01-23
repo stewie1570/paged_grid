@@ -20,7 +20,7 @@ export function Pager(props) {
         {currentPage !== 0 && <button onClick={() => props.onPageSelected(0)}>First</button>}
         {
             pages.map(page => page === currentPage
-                ? <span className={pages.length > 1 ? "current-page" : ""}>{(page + 1)}</span>
+                ? <span className={pages.length > 1 ? "current-page" : ""} key={page}>{(page + 1)}</span>
                 : <button
                     key={page}
                     onClick={() => props.onPageSelected(page)}>
