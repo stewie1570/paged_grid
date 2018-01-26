@@ -4,9 +4,9 @@ var numOfPagesFrom = ({ numItems, itemsPerPage }) => Math.round((numItems / item
 
 export var Paging = {
     on: data => ({
-        getPage: ({ itemsPerPage, page }) => {
+        getPage: ({ itemsPerPage, pageNumber }) => {
             var lastPage = numOfPagesFrom({ numItems: data.length, itemsPerPage }) - 1;
-            var currentPage = Math.min(page, lastPage);
+            var currentPage = Math.min(pageNumber, lastPage);
 
             return data.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
         }

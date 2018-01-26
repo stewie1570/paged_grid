@@ -34,7 +34,7 @@ class App extends Component {
             <HorozontalGrid
                 rows={Paging
                     .on(filteredData)
-                    .getPage({ itemsPerPage, page: this.state.currentPage })
+                    .getPage({ itemsPerPage, pageNumber: this.state.currentPage })
                 }
                 columns={["col1", "col2"]}
                 noRowsMessage={<i>No data...</i>}

@@ -8,7 +8,7 @@ describe("Paging", () => {
                 .on([1, 2, 3, 4])
                 .getPage({
                     itemsPerPage: 2,
-                    page: 1
+                    pageNumber: 1
                 })).toEqual([3, 4]);
         });
 
@@ -17,7 +17,7 @@ describe("Paging", () => {
                 .on([1, 2, 3, 4])
                 .getPage({
                     itemsPerPage: 3,
-                    page: 1
+                    pageNumber: 1
                 })).toEqual([4]);
         });
 
@@ -26,7 +26,7 @@ describe("Paging", () => {
                 .on([1, 2, 3, 4])
                 .getPage({
                     itemsPerPage: 3,
-                    page: 3
+                    pageNumber: 3
                 })).toEqual([4]);
         });
     });
