@@ -3,7 +3,7 @@ import { Paging } from '../core/paging'
 import './pager.css'
 
 export function Pager(props) {
-    var numItems = props.numItems || props.rows.length;
+    var numItems = (props.rows && props.rows.length) || props.numItems;
     var pages = Paging
         .getAvailablePagesFrom({
             itemsPerPage: props.itemsPerPage,
