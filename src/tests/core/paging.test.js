@@ -89,13 +89,23 @@ describe("Paging", () => {
                 })).toEqual([0, 1, 2, 3, 4])
         });
         
-        it("should not have decimals in pages", () => {
+        it("should not have decimals in pages when dealing with remainders", () => {
             expect(Paging
                 .getAvailablePagesFrom({
                     itemsPerPage: 10,
                     maxPages: 5,
                     currentPage: 9,
                     numItems: 99
+                })).toEqual([5, 6, 7, 8, 9])
+        });
+
+        it("should not have decimals in pages when not deal with remainders", () => {
+            expect(Paging
+                .getAvailablePagesFrom({
+                    itemsPerPage: 10,
+                    maxPages: 5,
+                    currentPage: 9,
+                    numItems: 100
                 })).toEqual([5, 6, 7, 8, 9])
         });
     });

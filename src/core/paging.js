@@ -1,6 +1,11 @@
 import { range } from './index'
 
-var numOfPagesFrom = ({ numItems, itemsPerPage }) => Math.round((numItems / itemsPerPage) + 0.49999999999);
+var numOfPagesFrom = ({ numItems, itemsPerPage }) => {
+    const numPages = numItems / itemsPerPage;
+    const flooredNumPages = Math.floor(numPages);
+
+    return numPages > flooredNumPages ? flooredNumPages + 1 : flooredNumPages;
+}
 
 export var Paging = {
     on: data => ({
