@@ -6,6 +6,6 @@ export function TextInput(props) {
     return <input
         {...otherProps}
         type="text"
-        value={props.value}
-        onChange={({target}) => props.onChange && props.onChange(target.value)} />;
+        value={value}
+        onChange={({target}) => onChange && onChange(target.value)} />;
 }
