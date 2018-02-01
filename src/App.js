@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { HorozontalGrid } from './components/horozontal-grid'
 import { Pager } from './components/pager'
 import { TextInput } from './components/text-input'
-import { range } from './core'
+import { range, camelToSpacedProper } from './core'
 import { Paging } from './core/paging'
 import { Filter } from './core/filtering'
 import 'bootstrap-css-only'
@@ -38,6 +38,7 @@ class App extends Component {
                 }
                 columns={["col1", "col2"]}
                 noRowsMessage={<i>No data...</i>}
+                columnRenamer={camelToSpacedProper}
                 className="table table-striped" />
             <Pager
                 numItems={filteredData.length}

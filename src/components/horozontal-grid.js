@@ -3,13 +3,13 @@ import Guid from 'guid'
 import { camelToSpacedProper } from '../core'
  
 export function HorozontalGrid(props) {
-    const { rows, columns, noRowsMessage, ...otherProps } = props;
+    const { rows, columns, noRowsMessage, columnRenamer, ...otherProps } = props;
  
     return <table {...otherProps}>
         <tbody>
             <tr key="header">
                 {
-                    columns.map(col => <th key={col}>{camelToSpacedProper(col)}</th>)
+                    columns.map(col => <th key={col}>{(columnRenamer && columnRenamer(col)) || camelToSpacedProper(col)}</th>)
                 }
             </tr>
             {
